@@ -2,7 +2,7 @@
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 
 \begin{document}
-	\section*{Types of Data}
+	\section{Types of Data}
 	\textbf{Numeric/Quantitative} -- consists of numbers representing counts or measurements
 	\begin{itemize}
 		\item \textbf{\textit{Continuous} --} results from infinitely many possible quantitative values, where the collection of values is not countable.
@@ -30,8 +30,8 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\section*{Design of Experiments (DOE)}
-	\subsection*{What is a designed experiment?}
+	\section{Design of Experiments (DOE)}
+	\subsection{What is a designed experiment?}
 	\begin{itemize}
 		\item Powerful data collection and analysis tool.
 		\item Investigator observes how a response variable (yield, strength, cost) behaves when the researcher \textbf{manipulates} one or more factors/treatments (temperature, speed, vendor)
@@ -43,11 +43,96 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\subsection*{Why designed experiments?}
+	\subsubsection*{Why designed experiments?}
 	\begin{itemize}
 		\item Causality -- can confidently attribute observed changes to specific factors
 		\item Minimize Bias -- ensures any difference in the groups are due to chance
-		]item Cost and Time Efficiency -- using a well designed experiment researcher can save time and money to ensure good data
+		\item Cost and Time Efficiency -- using a well designed experiment researcher can save time and money to ensure good data
+		\item Increase reliability and validity -- reduces errors, controls for confounding variables, and allows for replication
+		\item Can generalize to the greater population
 	\end{itemize}
+	
+	\subsection{Observational Studies}
+	\subsubsection{What is an Observational Study?}
+	\begin{itemize}
+		\item Investigators \textbf{observe} characteristics of the sample without assigning treatments or intervention to draw conclusions about corresponding populations or differences between two or more groups.
+		\item Retrospective -- Use either all or a small sample of historical data from some time period.
+		\item \textbf{Goal:} To describe a group or situation, identify associations between variables, and understand natural behaviors or outcomes without researchers intervening or manipulating anything.
+	\end{itemize}
+	\subsubsection{Why an Observational Study?}
+	\begin{itemize}
+		\item \textbf{Ethical Reasons:} It's unethical to assign certain risks or treatments to people in a controlled experiment.
+		\item \textbf{Practicality:} Ideal for studying the causes of conditions or diseases, especially rare conditions.
+		\item \textbf{Real-World Settings:} Allows for observations in a natural environment, showing how people make choices and react in their real lives.
+	\end{itemize}
+	\subsubsection{Cons of an Observational Study}
+	\begin{itemize}
+		\item Lack of randomization of experimental units (subjects)
+		\subitem Ethical issues (e.g. Seatbelts)
+		\subitem Traits not randomly assigned
+		\item \textbf{Causality:} Cannot make cause and effect conclusions
+		\item \textbf{Confounding Factors:} Cannot rule out the possibility that observed effect is due to some other variable.
+		\item \underline{Not able to generalize} to the greater population.
+	\end{itemize}
+	\subsection{Principles of Good Experiments}
+	\subsubsection{Randomization}
+	\begin{itemize}
+		\item Experimental units are assigned to treatments at random using some sort of chance process
+		\item Equalizes the treatment groups so any differences in the response can be attributed to the explanatory variable (treatments)
+		\item Reduces confounding and bias
+	\end{itemize}
+	In \underline{completely randomized design}, the treatments are assigned to all the experimental units completely by chance.
+	\subsubsection{Block}
+	A \textbf{block} is a technique used to deal with nuisance variables.
+	\begin{itemize}
+		\item A \textbf{nuisance} factor is a factor that has some effect on the response, but is of no interest to the experimenter.
+		\item However, the variability it transmits to the response needs to be minimized or explained.
+		\item \textbf{Examples of Nuisance Factors:}
+		\subitem \textit{batches} of raw material if you are in a production situation
+		\subitem different \textit{operators}, nurses or subjects in studies
+		\subitem the \textit{pieces} of test equipment, when studying a process
+		\subitem time (shifts, days, etc.) where the time of day or the shift can be a factor that influences the response.
+		\item Random assignment of experimental units to treatments is carried out separately within each block
+		\subitem Think of doing the complete replicate of the basic experiment is conducted in each block
+		\item Form blocks based on the most important unavoidable sources of variability (lurking variables) among the experimental units.
+		\item Randomization will average out the effects of the remaining lurking variables and allow an unbiased comparison of the treatments.
+	\end{itemize}
+	\noindent\textbf{Block Design}\\
+	\textbf{Control Group} A group of experimental units are treated the same but do not receive the treatment.
+	\begin{itemize}
+		\item Baseline
+		\item They may receive no treatment or a placebo.
+	\end{itemize}
+	\textbf{Placebo:} A treatment which lacks the active ingredient of the treatment being tested, but identical in appearance to the treatment. Placebos are a way of achieving blinding.\\
+	\textbf{Placebo effect} -- participants who are given a placebo treatment experience a change even though they are not receiving any active treatment.\\
+	\textbf{Blinding:} Participants do not know which treatment they are getting.
+	\begin{itemize}
+		\item Single or double blinding
+		\item Helps reduce bias
+		\item Example of blinding without a placebo:
+		\subitem Auditions for symphony orchestras take place behind a curtain so that the judges cannot see the performer
+		\subitem Blinding the judges to the gender of the performers has been shown to increase the hiring of women
+		\subitem Blind tests can also be used to compare the quality of musical instruments
+	\end{itemize}
+	\subsection{Types of Variables in a DOE}
+	\subsubsection{Explanatory Variables}
+	\textbf{Explanatory Variables/factors} is the one that may cause or explain the differences in a \textbf{response variable}.
+	\subsubsection{Confounding Variable}
+	\begin{itemize}
+		\item A variable that is in the study and is related to the other study variables, thus having an effect on the relationship between these variables.
+		\item One whose effects on the response variable cannot be distinguished from one or more of the explanatory variables in the study
+		\item From poor design or cannot avoid
+		\item Effects can be neutralized by using DOE techniques.
+	\end{itemize}
+	\subsubsection{Lurking Variable}
+	\begin{itemize}
+		\item A variable that is neither the explanatory variable nor the response variable but has a relationship (e.g. may be correlated) with the response and the explanatory variable. 
+		\item It is not considered in the study but could influence the relationship between the variables in the study. 
+		\item Apparent association between two variables is really just a common response to a third unseen variable. 
+		\item A lurking variable, if included in the study, could have a confounding effect and then be classified as a confounding variable. 
+		\item Common in observational studies 
+		\item Risk if do not randomize properly in a designed experiment. 
+	\end{itemize}
+	
 	
 \end{document}
