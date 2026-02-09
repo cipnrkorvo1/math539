@@ -1,18 +1,155 @@
 \documentclass[]{article}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage{enumitem}
+\usepackage{amsmath}
 
 % A document which is more condensed for definitions and reference
 
+\newenvironment{definitions}{
+	\begin{description}[font=\sffamily\bfseries, leftmargin=1cm, style=nextline]
+	}{
+	\end{description}
+}
+
 \begin{document}
 	\section{Types of Data}
-	\begin{description}[font=\sffamily\bfseries, leftmargin=1cm, style=nextline]
+	\begin{definitions}
 		\item[Numeric/Quantitative]
 		Consists of numbers representing counts or measurements. \textit{\textbf{Continuous}} values have (potentially) infinite precision/\# of values, \textit{\textbf{Discrete}} values are countable/finite/indivisible.
 		\item[Categorical/Qualitative]
 		Consists of names or labels that are not numbers representing counts or measurements. \textit{\textbf{Nominal}} values are names/labels/categories \textit{only}. \textit{\textbf{Ordinal}} values can be arranged in some inherent order.
-	\end{description}
+	\end{definitions}
 	
 	\section{Design of Experiments (DOE)}
+	\subsection{Types of Experiments}
+	\begin{definitions}
+		\item[Designed Experiment]
+		Investigator observes how a response variable behaves when a researcher manipulates one or more factors/treatments. Able to generalize to the greater population.
+		\item[Observational Study]
+		Investigators observe characteristics of the sample without assigning treatments or intervention to draw conclusions about corresponding populations. NOT able to generalize to the greater population.
+		\item[Causality]
+		Cannot make cause and effect conclusions.
+		\item[Confounding Factors]
+		Cannot rule out the possibility that the observed effect is due to some other variable.
+	\end{definitions}
+	\subsection{Types of Variables}
+	\begin{definitions}
+		\item[Response Variable]
+		The target variable of an experiment.
+		\item[Explanatory Variable]
+		May cause of explain the differences in a response variable.
+		\item[Nuisance Variable]
+		A variable which has an effect on the response, but is of no interest to the experimenter.
+		\item[Confounding Variable]
+		One whose effects on the response variable cannot be distinguished from explanatory variables in the study. A type of nuisance variable.
+		\item[Lurking Variable]
+		Neither explanatory nor the response variable, but may be correlated with both; Not considered in the study but may influence the relationship between the explanatory and response variable. A type of nuisance variable.
+		\item[Treatment]
+		Combination of factors or explanatory variable levels.
+	\end{definitions}
+	\subsection{Principles of Good Experiments}
+	\begin{definitions}
+		\item[Blocking]
+		A technique used to deal with nuisance factors/variables.
+		\item[Control Group]
+		A group of experimental units are treated the same but do not receive the treatment.
+		\item[Placebo]
+		A treatment which lacks the active ingredient/factor being tested, but is indistinguishable to the participants.
+		\item[Single/Double Blinding]
+		Participants do not know which treatment they are getting. Double blinded $\rightarrow$ researchers do not know either.
+	\end{definitions}
+	\subsection{Picking a Sample}
+	\subsubsection{Types of Bias}
+	\begin{definitions}
+		\item[Bias]
+		The design of a sample is biased if it systematically favors certain outcomes.
+		\item[Selection bias]
+		Occurs when some groups in the population are left out because of the process of choosing the sample.
+		\item[Nonresponse]
+		Occurs when an individual chosen for the sample can't be contacted or refuses to participate.
+		\item[Response bias]
+		A systematic pattern of incorrect responses, comes from improper execution (poor question wording, tool not calibrated correctly).
+	\end{definitions}
+	\subsubsection{Types of Sampling}
+	\begin{definitions}
+		\item[Voluntary Response Sample (-)]
+		Consists of people who choose themselves by responding to a general appeal. VRS shows bias because people with strong opinions are most likely to respond.
+		\item[Sample of Convenience (-)]
+		Researchers use subjects that are near or available to participate in their study.
+		\item[Simple random sampling ($\cdot$)]
+		Picking individuals from a population such that each individual has an equal chance to be selected.
+		\item[Stratified sampling (+)]
+		Dividing a population into homogeneous subgroups (\textbf{strata}) based on \textit{relevant characteristics}, and then randomly selecting samples from each stratum. Increases precision, more implementation complexity.
+		\item[Cluster sampling (+)]
+		Entire population is divided into groups called clusters, and then a random selection of these clusters is chosen for the study. Simple and cost-effective, but potential for bias if clusters are not representative.
+		\item[Systematic sampling ($\cdot$)]
+		Sample members from a larger population are selected according to a random starting point but a fixed, periodic interval (e.g. Select every fourth person).
+	\end{definitions}
+	\section{Exploratory Data Analysis (EDA)}
+	\subsection{Numerical Data}
+		\begin{definitions}
+			\item[Mean]
+			Measure of center, average, balance point. Notated as $\bar{x}$. For a finite population with $N$ measurements, the population mean is the average of all individuals. The sample mean of a sample of size $n$ is an estimate of the population mean.
+			\begin{align*}
+				\text{(generic parameter)\quad} \mu = \frac{\sum_{i=1}^{N}x_i}{N}
+				\qquad & \qquad \bar{x} = \frac{\text{sum of observations}}{n} = \frac{x_1+x_2+\dots+x_n}{n}
+			\end{align*}
+			Preferable to use for reasonably symmetric distributions that don't have outliers.
+			\item[Median]
+			The midpoint of a distribution, the number such that half of the observations are smaller and the other half are larger.\\
+			To find the median, arrange all observations from smallest to largest. The median $M$ is the center observation in the ordered list, or the average of the two centered observations if $n$ is even.\\
+			Preferable to use for describing skewed distributions or distributions with outliers.
+			\item[Robust/Resistant]
+			Not influenced by extreme observations.
+			\item[Quartiles]
+			Each quartile $Q+n$ is the value in a rank-ordered list where $n$ quarter of the values are at or below it.\\
+			The first quartile $Q_1$ is located in the $\frac{1}{4}\ast (n+1)$th position.\\
+			The second quartile $Q_2$ is located in the $\frac{1}{2}\ast (n+1)$th position (this is the median).\\
+			The third quartile $Q_3$ is located in the $\frac{3}{4}\ast (n+1)$th position.
+			\item[Variance]
+			When the population is finite and consists of $N$ values, we may define the \textit{population variance} as
+			\[\sigma^2 = \frac{\sum_{i=1}^{N}(x_i - \mu)^2}{N-1}\]
+			The population variance is the average squared distance an observation is from the mean.
+			\item[Standard Deviation]
+			When the population is finite and consists of $N$ values, we may define the \textit{population standard deviation} as
+			\[\sigma = \sqrt{\sigma^2}\]
+			The population standard deviation is the average distance an observation is from the mean.\\
+			A quick rule of thumb is that the lower/upper bound for usual values is:
+			\begin{align*}
+				&\text{Lower bound } = \text{ Min Usual Value } = \bar{x} - 2\cdot \sigma\\
+				&\text{Upper bound } = \text { Max Usual Value } = \bar{x} + 2\cdot \sigma
+			\end{align*}
+			\item[Interquartile Range (IQR)]
+			The spread of half of your data; The range from the first quartile to the third quartile.
+			\[ \text{IQR } = Q_3 - Q_1\]
+		\end{definitions}
+	\section{EDA -- Graphical}
+	\begin{definitions}
+		\item[Distribution]
+		The shape of the data over the range of values. The distributions of a \textit{quantitative} variable tells us what values the variable takes on and how often it takes those values.
+		\item[Center]
+		Representative value that indicates where the middle of the data is located.
+		\item[Variation]
+		Measure of the amount that the data values vary.
+		\item[Outliers]
+		Values that lie very far away from the vast majority of the data.
+		\item[Relationships]
+		Associations between variables
+		\item[Trends]
+		Change in characteristics of the data over time.
+	\end{definitions}
+	\subsection{Graphs for Quantitative/Numeric Values}
+	\begin{definitions}
+		\item[Frequency Tables or Distributions]
+		Shows how the data are partitioned among several categories by listing the categories along with the number (frequency) of data values in each of them.
+		\item[Histograms]
+		Shows the distribution of a quantitative variable by using bars whose height represents the number of individuals who take on a variable within a particular class.
+		\item[Boxplots]
+		A graph of the data using the minimum, maximum, and quartiles.
+		\item[Stem and Leaf Plots]
+		A graph that divides each data point into a stem and a leaf. It shows the shape of the data using the data itself.
+		\item[Dot Plots]
+		Displays data where each dot represents one (or more) data point(s).
+	\end{definitions}
 
 \end{document}
