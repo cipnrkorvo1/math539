@@ -151,5 +151,110 @@
 		\item[Dot Plots]
 		Displays data where each dot represents one (or more) data point(s).
 	\end{definitions}
+\section{Probability}
+\begin{definitions}
+	\item[Experiment]
+	An activity that can result in different outcomes, even though it is repeated in the same manner every time. (e.g. flipping a coin, tossing a die)
+	\item[Sample Space]
+	All possible outcomes of an experiment. \textbf{Discrete} -- finite/countable, \textbf{Continuous} -- interval/uncountably infinite
+	\item[Event]
+	A subset of a sample space (e.g. rolling two fair dice; let $A$ be the event that the sum of the dice is 8). The probability of an event $A$ occurring:
+	\[P(A) = \frac{\text{Number of outcomes in an event}}{\text{Number of outcomes in a sample space}}\]
+	\item[Empirical Probability]
+	An estimate of the value using empirical data from an experiment/series of experiments.
+	\[P(A) = \frac{\text{Number of times the event has occurred}}{\text{Number of times experiment repeated}}\]
+	\item[Law of Large Numbers]
+	A mathematical law that states that the average of the results obtained from a large number of independent random samples converges to the true value, if it exists.
+\end{definitions}
+	\subsection{Probability Rules}
+	\begin{definitions}
+		\item[Rule 1]
+		For any event $A$, the range of possible probabilities is $0 \leq P(A) \leq 1$.
+		\item[Rule 2]
+		For the sample space $S$ of all possibilities, $P(S) = 1$.
+		\item[Rule 3: Addition Rule]
+		If two events $A$ and $B$ are \textit{mutually exclusive} or \textit{disjoint}, then
+		\[P(A \cup B) = P(A) + P(B)\]
+		If two events are NOT mutually exclusive, then
+		\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]
+		\item[Rule 4: Complement Rule]
+		For any event $A$,
+		\[P(A^c) = 1 - P(A) \text{ or } P(A) = 1 - P(A^c)\]
+		\item[Rule 5: Conditional Probability]
+		For two events $A$ and $B$, $P(A|B)$ means the probability that event $A$ occurs \textit{given} event $B$ has occurred.
+		\[ P(A|B) = \frac{P(A \cap B)}{P(B)}\]
+		\item[Rule 6: Multiplication Rule]
+		The probability that both events $A$ and $B$ occur:
+		\[P(A \cap B) = P(B) * P(A|B)\]
+		If $A$ and $B$ are \textbf{independent}--neither event influences or affects the probability that the other event occurs--then
+		\[ P(A \cap B) = P(A) * P(B)\]
+		This particular rule extends to more than two independent events:
+		\[ P(A \cap B \cap C) = P(A) * P(B) * P(C)\]
+	\item[Event Independence]
+	Two events $A$ and $B$ are \textit{independent} if any of the following (equivalent) statements are true:
+	\[P(B|A) = P(B) \qquad P(A|B) = P(A) \qquad P(A\cap B) = P(A)*P(B)\]
+\end{definitions}
+\section{Discrete Probability Distributions}
+\begin{definitions}
+	\item[Probability model]
+	Describes the possible outcomes of a chance process and the likelihood that those outcomes will occur.
+	\item[Random variable]
+	A numerical variable that describes the outcomes of a chance process
+	\item[Discrete random variable]
+	A discrete random variable (RV), $X$, takes a fixed set of possible values with gaps between.
+	\item[Probability mass function]
+	The pmf is used to describe the probability distribution of a discrete RV, $X$.\\
+	Must satisfy two requirements:
+	\[
+		0 \leq f(x_i) \leq 1 \hspace{2cm} \sum_{i=1}^{k}f(x_i) = 1
+	\]
+	To find the probability of any event, add the probabilities $p_i$ of the particular values $x_i$ that make up the event.
+	\item[Cumulative distribution function]
+	A cdf of a discrete random variable $X$ is the probability that the variable takes a value less than or equal to $x$.
+	\[ F(x) = P(X \leq x) = {\sum}_{x_i \leq x}f(x_i) \]
+	\item[Expected value]
+	The number that we would expect any observation to be near. Population/distribution mean is the same as expected value. Can think of as weighted average.
+	\[ E(X) = \mu = \sum_{i=1}^{k}x_if(x_i) \]
+	\item[Variance]
+	A measure of how much the probability mass is spread around this center.
+	\[ V(X) = \sigma^2 = E(X - \mu)^2 = \sum_{i=1}^{k}(x_i-\mu)^2f(x_i) = \left[\sum_{i=1}^{k}x_i^2f(x_i)\right]-\mu^2 \]
+\end{definitions}
+\subsection{Binomial Distribution}
+\begin{definitions}
+	\item[Bernoulli trial]
+	A single run of an experiment or process which results in only one of two options, usually labeled as "success" or "failure"
+	\item[Binomial experiment]
+	Consists of $n$ identical and independent Bernoulli trials.
+	\item[Binomial random variable]
+	Results from a binomial experiment and is defined as a count of the number of "successes" out of $n$ trials.
+	\item[Binomial probability distribution]
+	A p.d. which results from a procedure or experiment that meets the following requirements:
+	\begin{enumerate}[itemsep=0pt]
+		\item The procedure has a fixed number of trials.
+		\item The trials are independent.
+		\item Each trial must have all outcomes classified into two categories (success or failure).
+		\item The probability of success remains the same in all trials.
+	\end{enumerate}
+	\item[Binomial distribution parameters]
+	Minimum necessary information to calculate probabilities:
+	\begin{itemize}[itemsep=0pt]
+		\item $p$ = probability that a randomly selected Bernoulli trial results in a "success"
+		\item $n$ = number of independent Bernoulli trials
+	\end{itemize}
+	\item[Binomial notation]
+	\[ X \sim Bin(n,p)\]
+	\item[Binomial pmf]
+	\begin{align*}
+		P(x = x) &= P(x)\\
+		&= \binom{n}{x} p^x(1-p)^{n-x}
+	\end{align*}
+	Where
+	\[ \binom{n}{x} = nCx = \frac{n!}{x!(n-x)!} \]
+	\item[Binomial expected value]
+	\[E(x) = \mu = np\]
+	\item[Binomial variance and standard deviation]
+	\[ \sigma = \sqrt{V(X)} = \sqrt{npq} \]
+	
+\end{definitions}
 
 \end{document}
