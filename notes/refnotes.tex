@@ -1,6 +1,6 @@
 \documentclass[]{article}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
-\usepackage{enumitem}
+\usepackage{enumitem, multirow}
 \usepackage{amsmath}
 
 % A document which is more condensed for definitions and reference
@@ -254,7 +254,99 @@
 	\[E(x) = \mu = np\]
 	\item[Binomial variance and standard deviation]
 	\[ \sigma = \sqrt{V(X)} = \sqrt{npq} \]
-	
+\end{definitions}
+\section{Continuous Random Variables}
+\begin{definitions}
+	\item[Continuous random variable]
+	A continuous random variable $Y$ takes on all values in an interval of numbers.
+	\item[Probability density curve (pdf)]
+	The probability distribution of $Y$---The probability of any event is the area under the density curve and above the values of $Y$ that make up the event.
+	Properties of the pdf:
+	\[
+	1.\; f(x) \geq 0 \qquad \qquad 2.\; \int_{-\infty}^{\infty}f(x)dx = 1
+	\]
+	\item[Density curve]
+	A mathematical model which has been scale-adjusted so the total area under the curve is exactly 1.
+	\item[Calculating probability]
+	The probability of an individual event occurring is 0; only \emph{intervals} have a probability of occurring with continuous probability models.
+	\[ P(a < X < b) = \int_{a}^{b}f(x)dx \]
+	\item[Cumulative density function (cdf)]
+	The cdf accumulates all the probability less than or equal to $a$.
+	\[ F(x) = P(X \leq a) = \int_{-\infty}^af(x)dx \]
+	\item[Expected value (mean)]
+	\[ E(x) = \mu = \int_{-\infty}^{\infty}xf(x)dx \]
+	\item[Variance]
+	\[ V(X) = \sigma^2 = \left[\int_{-\infty}^{\infty}x^2f(x)dx\right] - \mu^2 \]
+	\item[Standard deviation]
+	\[ \sigma = \sqrt{\sigma^2} \]
+\end{definitions}
+\subsection{Normal Distribution}
+\begin{definitions}
+	\item[Normal curve notation]
+	A specific nNormal curve is described by giving its mean $\mu$ and standard deviation $\sigma$. The mean of a Normal distribution is the center of a symmetric \emph{Normal curve} and the standard deviation is the distance from the center to the change-of-curvature points on either side
+	\[ X \sim N(\mu, \sigma) \]
+	\item[Probability Density Function (pdf) of a Normal curve]
+	The random variable $X$ is said to follow a normal distribution if the probability density function can be described as...
+	\begin{gather}
+		{\text{For }-\infty < x < \infty}
+		\qquad
+		{f(x) = \frac{1}{\sqrt{2\pi \sigma}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}}
+	\end{gather}
+	This function is not integrable, cannot be used to find probabilities.
+	\item[68-95-99.7 Rule]
+	In the Normal distribution with mean $\mu$ and standard deviation $\sigma$:
+	\begin{itemize}[itemsep=0pt]
+		\item Approximately \textbf{68\%} of the observations fall within $\pm\sigma$ of $\mu$.
+		\item Approximately \textbf{95\%} of the observations fall within $\pm2\sigma$ of $\mu$.
+		\item Approximately \textbf{99.7\%} of the observations fall within $\pm3\sigma$ of $\mu$.
+	\end{itemize}
+	\item[Standard Normal distribution]
+	The Normal distribution with mean 0 and standard deviation 1
+	\[ Z \sim N(0,1) \]
+	All Normal distributions are the same if we measure in units of size $\sigma$ from the mean $\mu$ as center.
+	\item[Standardized value / z-score]
+	If a variable $x$ has a distribution with mean $\mu$ and standard deviation $\sigma$, then the \emph{standardized value} of $x$, or its \emph{z-score}, is
+	\[ z = \frac{x - \mu}{\sigma} \]
+	Because all Normal distributions are the same when we standardize, we can find areas under any Normal curve from a single table. (See a \emph{z-score table})
+	\item[Application of the Normal Distribution]
+	\begin{enumerate}[itemsep=0pt]\item[]
+		\item Express the problem in terms of the observed variable $x$.
+		\item Draw a picture of the distribution and shade the area of interest under the curve,
+		\item Perform calculations.
+		\item Standardize $X$ to restate the problem in terms of a Standard Normal variable $Z$.
+		\item Use the Standard Normal Table and the fact that the total area under the curve is 1 to find the required area under the Standard Normal curve.
+		\item Write your conclusion in the context of the problem.
+	\end{enumerate}
+	\item[Shapiro-Wilk test]
+	Goodness of fit test for the normal distribution. Null hypothesis: The data follows a normal distribution. Alternative hypothesis: The data does not follow a normal distribution.
+	\item[Normal Approximation to the Binomial]
+	The normal distribution is used to approximate the binomial \emph{when $n$ is large}. When $n$ is large enough, the following is true:\\
+	If $X$ is a binomial random variable,
+	\[ Z = \frac{X - np}{\sqrt{np(1 - p)}}\]
+	is approximately a standard normal random variable. Consequently, probabilities computed from $Z$ can be used to approximate probabilities for $X$.\\
+	\textbf{Rule of Thumb:} Use the approximation if $np > 10$ and $n(1-p) > 10$.
+	\item[Continuity Correction Factor]
+	Correction due to approximating a discrete RV with a continuous RV. \emph{Look up.}
+\end{definitions}
+\section{Estimation}
+\begin{definitions}
+	\item[Parameter] A number that describes some characteristic of the population. In statistical practice, the value of the parameter is not known because we cannot examine the entire population.
+	\item[Statistic] A number that describes some characteristic of a sample. The value of a statistic can be computed directly from the sample data.
+	\item[Point Estimate] A single numeric value that estimates a population parameter
+	\begin{center}\begin{tabular}{||c|c|c||}
+		\hline
+		Pop. Parameter & Point Estimate & Formula\\
+		\hline\hline
+		$\mu$: Pop. mean & $\bar{x}$: Sample mean & \multirow{2}{7em}{$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$}\\
+		&&\\
+		\hline
+	\end{tabular}\end{center}
+	\item[Confidence Interval] Used to bound the uncertainty we have in the true value of population characteristics such as the true population mean $\mu$ --- "plausible range of values"
+	\item[Sampling Distribution] A probability distribution associated with a statistic. It represents the distribution of the point estimate based on samples of a fixed size from a certain population.
+	\item[Center of the Sampling Distribution]
+	If the sample statistics is \textbf{unbiased}, the center is the population parameter.
+		\[E(<\text{estimator}>) = E(\hat{\theta}) = \theta\]
+	On average, the estimate or statistic is targeting the true value of the parameter.
 \end{definitions}
 
 \end{document}
