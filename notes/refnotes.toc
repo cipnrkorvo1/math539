@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Types of Data}{1}{}%
+\contentsline {section}{\numberline {2}Design of Experiments (DOE)}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Types of Experiments}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Types of Variables}{2}{}%
+\contentsline {subsection}{\numberline {2.3}Principles of Good Experiments}{2}{}%
+\contentsline {subsection}{\numberline {2.4}Picking a Sample}{3}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Types of Bias}{3}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}Types of Sampling}{3}{}%
+\contentsline {section}{\numberline {3}Exploratory Data Analysis (EDA)}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Numerical Data}{4}{}%
+\contentsline {section}{\numberline {4}EDA -- Graphical}{5}{}%
+\contentsline {subsection}{\numberline {4.1}Graphs for Quantitative/Numeric Values}{5}{}%
+\contentsline {section}{\numberline {5}Probability}{5}{}%
+\contentsline {subsection}{\numberline {5.1}Probability Rules}{6}{}%
+\contentsline {section}{\numberline {6}Discrete Probability Distributions}{7}{}%
+\contentsline {subsection}{\numberline {6.1}Binomial Distribution}{8}{}%
+\contentsline {section}{\numberline {7}Continuous Random Variables}{9}{}%
+\contentsline {subsection}{\numberline {7.1}Normal Distribution}{9}{}%
+\contentsline {section}{\numberline {8}Estimation}{11}{}%
+\contentsline {section}{\numberline {9}Hypothesis Testing for the Mean}{11}{}%
+\contentsline {section}{\numberline {10}Hypothesis Testing 2 Sample}{11}{}%
+\contentsline {subsection}{\numberline {10.1}Test for Paired Data}{12}{}%
+\contentsline {subsection}{\numberline {10.2}Test for Independent Data}{13}{}%
+\contentsline {subsection}{\numberline {10.3}Test for Unequal Variances}{15}{}%

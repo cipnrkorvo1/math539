@@ -12,6 +12,12 @@
 }
 
 \begin{document}
+	
+	\tableofcontents
+	\hspace{2em}
+	\hrule
+	\hrule
+	
 	\section{Types of Data}
 	\begin{definitions}
 		\item[Numeric/Quantitative]
@@ -348,5 +354,136 @@
 		\[E(<\text{estimator}>) = E(\hat{\theta}) = \theta\]
 	On average, the estimate or statistic is targeting the true value of the parameter.
 \end{definitions}
+
+\section{Hypothesis Testing for the Mean}
+
+\section{Hypothesis Testing 2 Sample}
+\emph{Purpose: to determine whether the difference between two populations is statistically significant.}\\
+\subsection{Test for Paired Data}
+\begin{definitions}
+	\item[Parameter of interest]
+	$\mu_d = $ the mean difference between a population of paired observations.
+	\item[Required assumptions]
+	The data is from a \textbf{random sample} and the differences are \textbf{normally distributed}. Distribution can be assumed from historic data, a \emph{normal quantile plot} can check for normality, or if $n>30$ then the Central Limit Theorem applies. If the \textbf{population standard deviation} $\sigma$ is known, then a z-test is performed---if $\sigma$ is unknown, it is approximated by calculating the sample standard deviation $s$ and a t-test is performed.
+	\item[Null Hypothesis]
+	$H_0: \mu = \mu_0$. $\mu_0$ is the assumed value under $H_0$.\\
+	$H_0$ is the "no" hypothesis---no significance of a subgroup, no significance of a treatment, etc.\\
+	$mu_0$ is the "given" value of the parameter of interest. For 2-sample tests, typically $\mu_0 = 0$.
+	\item[Alternate Hypothesis]
+	$H_a$ is the hypothesis that a treatment or subgroup significantly affects the parameter of interest.
+	3 options:
+	\begin{align*}
+		H_a:& \mu \neq \mu_0\\
+		H_a:& \mu < \mu_0\\
+		H_a:& \mu > \mu_0
+	\end{align*} 
+	\item[Test statistic]
+	\emph{Assuming the null hypothesis $H_0$ and the data is normally distributed,} then the test statistic $\overline{X}$ is
+	\[ \overline{X} \sim N(\mu_0, \frac{\sigma}{\sqrt{n}}) \]
+	\textbf{z-test: $\sigma$ is known}
+	\[ Z_0 = z = \frac{\overline{X} - \mu_0}{\sigma / \sqrt{n}} \sim N(0,1) \]
+	\textbf{t-test: $\sigma$ is unknown} and estimated by $s$:
+	\[ T_0 = t = \frac{\bar{x} - \mu}{s / \sqrt{n}}\]
+	\item[Rejection Criteria -- critical value]
+	In tests for a mean, the critical value is positive or negative depending on the alternate hypothesis.\\
+	\textbf{z-test: when $\sigma$ is known}
+	\[
+	\begin{array}{llcl}
+		\text{Positive} & H_a: \mu > \mu_0 && \text{Reject for } Z_0 > z_{1-\alpha}\\
+		\text{Negative} & H_a: \mu < \mu_0 && \text{Reject for } Z_0 < z_{\alpha}\\
+		\text{Both} & H_a: \mu \neq \mu_0 && \text{Reject for } Z_0 > z_{1 - \alpha/2} \text{ or } Z_0 < z_{\alpha / 2}
+	\end{array}
+	\]
+	\textbf{t-test: $\sigma$ is unknown}
+	\[
+	\begin{array}{llcl}
+		\text{Positive} & H_a: \mu > \mu_0 && \text{Reject for } T_0 > t_{n-1, \alpha}\\
+		\text{Negative} & H_a: \mu < \mu_0 && \text{Reject for } T_0 < -t_{n-1, \alpha}\\
+		\text{Both} & H_a: \mu \neq \mu_0 && \text{Reject for } T_0 > t_{n - 1, \alpha/2} \text{ or } T_0 < t_{n - 1, \alpha / 2}
+	\end{array}
+	\]
+	\item[Rejection Criteria -- p-value]
+	The \emph{p-value} for a test is the probability of observing the value for the test statistics or more extreme assuming that $H_0$ is true.\\
+	\textbf{z-test: $\sigma$ known}
+	\[
+	\begin{array}{llcl}
+		\text{Positive} & H_a: \mu > \mu_0 && p = P(Z \geq Z_0)\\
+		\text{Negative} & H_a: \mu < \mu_0 && p = P(Z \leq Z_0)\\
+		\text{Both} & H_a: \mu \neq \mu_0 && p = P(Z > |Z_0|) + P(Z < -|Z_0|)
+	\end{array}
+	\]
+	\textbf{t-test: $\sigma$ unknown}
+	\[
+	\begin{array}{llcl}
+		\text{Positive} & H_a: \mu > \mu_0 && p = P(T \geq T_0)\\
+		\text{Negative} & H_a: \mu < \mu_0 && p = P(T \leq T_0)\\
+		\text{Both} & H_a: \mu \neq \mu_0 && p = P(T > |T_0|) + P(T < -|T_0|)
+	\end{array}
+	\]
+	With both tests, \textbf{reject} if $p \leq \alpha$.
+	\item[Decision]
+	Format using critical value method: \emph{Reject/Fail to reject the null hypothesis because the test statistic falls/does not fall in the rejection region.}\\\\
+	Format using the p-value method: \emph{Reject/Fail to reject the null hypothesis because the p-value is less than/greater than the significance level.}
+	\item[Confidence intervals for paired data]
+	Same setup as for a one sample confidence interval for the mean.\\
+	Use $z$ if $\sigma_d$ is known
+	\[ \overline{D} \pm z_{\alpha/2}\left(\frac{\sigma_d}{\sqrt{n}}\right) \]
+	Use $t_n-1$ if $\sigma_d$ is unknown
+	\[ \overline{D} \pm t_{n-1,\alpha/2}\left(\frac{s_d}{\sqrt{n}}\right) \]
+	Confidence intervals are equivalent to the two-sided hypothesis test. \emph{If the value for the null hypothesis is in the confidence interval, one does not reject $H_0$.}
+\end{definitions}
+\subsection{Test for Independent Data}
+\begin{definitions}
+	\item[Parameter of interest]
+	$\mu_1 - \mu_2 = $ the difference between the means of the two populations
+	\item[Assumptions/requirements]
+	Are the two samples independent? Are the two samples from a simple random sample? Are both samples from a normal population? Do we know the pop. standard deviations $\sigma_1$ and $\sigma_2$?\\
+	Are $\sigma_1$ and $\sigma_2$ equal? If so, we can use the pooled t-test. Use pooled when larger IQR $<$ 2*smaller IQR.
+	\item[Hypotheses]
+	\begin{align*}
+		H_0:& \mu_1 - \mu_2 = \Delta_0. \text{ By default, } \Delta_0 = 0\\
+		H_a:& \mu_1 0 \mu_2 \neq \Delta_0\\
+		H_a:& \mu_1 - \mu_2 < \Delta_0\\
+		H_a:& \mu_1 - \mu_2 > \Delta_0
+	\end{align*} 
+	\item[Test statistic]
+	\textbf{When $\sigma_1$ and $\sigma_2$ are unknown and unequal}
+	\[ T_0 = t = \frac{(\overline{X}_1 - \overline{X}_2) - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \]
+	Test statistic has a t distribution with approximate degrees of freedom
+	\[ df = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(\frac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\frac{s_2^2}{n_2}\right)^2}{n_2-1}} \]
+	If $df$ is not an integer, round down.\\
+	Ad hoc/alternate estimation of $df$ is $min(n_1-1,n_2-1)$.\\\\
+	\textbf{When $\sigma_1$ and $\sigma_2$ are unknown and equal; Pooled standard deviation}\\
+	Pooled approximation of the sample standard deviation:
+	\[ s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+_2-2}} \]
+	\emph{\textbf{Note:} pooled approx. is equal to the unequal case when there is a balanced design.}\\
+	\[ T_0 = t = \frac{\bar{x}_1 - \bar{x}_2 - \Delta_0}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}\]
+	Test statistic follows a t distribution with $n_1+n_2-2$ degrees of freedom.
+	\item[Rejection criteria -- critical value]
+	In tests for a mean, the critical value is positive or negative depending on the alternate hypothesis.
+	\[
+	\begin{array}{llcl}
+		\text{Positive} & H_a: \mu_1 - \mu_2 > \Delta_0 && t_{df, 1-\alpha}\\
+		\text{Negative} & H_a: \mu_1 - \mu_2 < \Delta_0 && -t_{df,\alpha}\\
+		\text{Both} & H_a: \mu_1 - \mu_2 \neq \Delta_0 && \pm t_{df,\alpha/2}
+	\end{array}
+	\]
+	\item[Rejection criteria -- p-value]
+	\[
+	\begin{array}{llcl}
+		\text{Positive} & H_a: \mu_1 - \mu_2 > \Delta_0 && p = P(t > T_0)\\
+		\text{Negative} & H_a: \mu_1 - \mu_2 < \Delta_0 && p = P(t < T_0)\\
+		\text{Both} & H_a: \mu_1 - \mu_2 \neq \Delta_0 && 2P(t > |T_0|)
+	\end{array}
+	\]
+	Reject for $p \leq \alpha$.
+	\item[Confidence intervals for independent data]
+	For independent samples where $\sigma_1$ and $\sigma_2$ are unknown and unequal:
+	\[ CI = (\overline{X}_1 - \overline{X}_2) \pm t \cdot \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} \]
+	Degrees of freedom can be found through equation/software or approx. by $min(n_1-1,n_2-1)$.
+	
+\end{definitions}
+
+\subsection{Test for Unequal Variances}
 
 \end{document}
